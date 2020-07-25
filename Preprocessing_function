@@ -1,0 +1,13 @@
+def rmv_missingval(data):
+    #this function interpolates the missing values in bands 1 to 7. missing values are -28672.0 in product.
+    nan = np.nan
+    data[data<-100]=nan
+    data_new = ~np.isnan(data)
+    xp = data_new.ravel().nonzero()[0]
+    fp = data[~np.isnan(data)]
+    x  = np.isnan(data).ravel().nonzero()[0]
+    data[np.isnan(data)] = np.interp(x, xp, fp)
+    return data
+    
+def normalize(data):
+    return  (data - np.min(data)) / (np.max(data)+np.min(data))

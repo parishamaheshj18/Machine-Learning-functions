@@ -1,0 +1,29 @@
+def perf_measure(y_actual, y_hat):
+    TP = 0
+    FP = 0
+    TN = 0
+    FN = 0
+    for i in range(40000): 
+        if np.array([y_actual[i]==1, y_hat[i]==1]).all():
+           TP += 1
+        if np.array([y_hat[i]==1 , y_actual[i]!=y_hat[i]]).all():
+           FP += 1
+        if np.array([y_actual[i]==0 , y_hat[i]==0]).all():
+           TN += 1
+        if np.array([y_hat[i]==0 , y_actual[i]!=y_hat[i]]).all():
+           FN += 1
+    return(TP, FP, TN, FN)
+
+def precision(TP,FP):
+    if TP+FP == 0:
+        r= 0
+    else:
+        r= TP/(TP+FP)
+    return r
+
+def recall(TP,FN):
+    if TP+FN == 0:
+        r= 0
+    else:
+        r= TP/(TP+FN)
+    return r

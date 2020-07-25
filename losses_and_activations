@@ -1,0 +1,14 @@
+#channel first
+def loss_cross(y_true, y_pred):
+    return tf.keras.backend.categorical_crossentropy(y_true, y_pred,from_logits=False,axis=1)
+    
+def my_leaky_relu(x):
+    return tf.nn.leaky_relu(x, alpha=0.2)
+    
+def sum_square(labels,logits):
+    loss_val = tf.compat.v1.reduce_sum(abs(tf.cast(labels,tf.float32)-tf.cast(logits,tf.float32))**2)**0.5
+    return loss_val
+    
+def my_softmax(x):
+    return tf.nn.softmax(x, axis=1, name=None)
+

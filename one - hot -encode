@@ -1,0 +1,11 @@
+def one_hot(a):
+    # 597 is the sample size, 1 is dimention(binary values), 200*200 image height and width
+    b=np.zeros((597,1,200,200), dtype=int)
+    where_0 = np.where(a == 0)
+    where_1 = np.where(a == 1)
+    b[where_0] = 1
+    b[where_1] = 0
+    c=np.concatenate((a,b),axis=1)
+    return c
+
+

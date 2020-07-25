@@ -1,0 +1,14 @@
+import matplotlib.pyplot as plt
+import numpy as np
+fig, axs = plt.subplots(2)
+
+axs[0].plot(history.history['loss'], label='train')
+axs[0].plot(history.history['val_loss'], label='test')
+axs[0].set_title("Categorical Cross entropy loss function")
+axs[0].legend(["Train", "Test"], loc ="upper right") 
+axs[1].plot(history.history['root_mean_squared_error'], label='train')
+axs[1].plot(history.history['val_root_mean_squared_error'], label='test')
+axs[1].set_title("RMSE")
+axs[1].legend(["Train", "Test"], loc ="upper right") 
+
+fig.tight_layout()
